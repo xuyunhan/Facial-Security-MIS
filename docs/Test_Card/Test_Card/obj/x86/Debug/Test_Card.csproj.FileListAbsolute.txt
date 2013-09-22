@@ -1,5 +1,0 @@
-C:\Users\Chenyufeng\Desktop\Test_Card\Test_Card\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Chenyufeng\Desktop\Test_Card\Test_Card\bin\Debug\Test_Card.exe
-C:\Users\Chenyufeng\Desktop\Test_Card\Test_Card\bin\Debug\Test_Card.pdb
-C:\Users\Chenyufeng\Desktop\Test_Card\Test_Card\obj\x86\Debug\Test_Card.exe
-C:\Users\Chenyufeng\Desktop\Test_Card\Test_Card\obj\x86\Debug\Test_Card.pdb
