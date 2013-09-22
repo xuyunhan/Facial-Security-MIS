@@ -35,16 +35,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV">
-      <HintPath>..\..\..\Microsoft Visual Studio 10.0\Common7\Packages\Debugger\Visualizers\Emgu.CV.dll</HintPath>
+      <HintPath>..\bin\Debug\Emgu.CV.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.DebuggerVisualizers.VS2010">
-      <HintPath>..\..\..\Microsoft Visual Studio 10.0\Common7\Packages\Debugger\Visualizers\Emgu.CV.DebuggerVisualizers.VS2010.dll</HintPath>
+      <HintPath>..\bin\Debug\Emgu.CV.DebuggerVisualizers.VS2010.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.UI">
-      <HintPath>..\..\..\Microsoft Visual Studio 10.0\Common7\Packages\Debugger\Visualizers\Emgu.CV.UI.dll</HintPath>
+      <HintPath>..\bin\Debug\Emgu.CV.UI.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.Util">
-      <HintPath>..\..\..\Microsoft Visual Studio 10.0\Common7\Packages\Debugger\Visualizers\Emgu.Util.dll</HintPath>
+      <HintPath>..\bin\Debug\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
