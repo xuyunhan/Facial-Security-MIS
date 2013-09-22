@@ -1,5 +1,0 @@
-C:\Users\Chenyufeng\Desktop\code-0\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Chenyufeng\Desktop\code-0\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.Form1.resources
-C:\Users\Chenyufeng\Desktop\code-0\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.Properties.Resources.resources
-C:\Users\Chenyufeng\Desktop\code-0\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Chenyufeng\Desktop\code-0\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\GenerateResource.write.1.tlog
