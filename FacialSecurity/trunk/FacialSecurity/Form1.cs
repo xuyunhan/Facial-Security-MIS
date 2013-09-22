@@ -14,8 +14,6 @@ namespace FacialSecurity
 	{
 		public Form1()
 		{
-		    int a;
-
 			InitializeComponent();
 		}
 	}
