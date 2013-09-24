@@ -1,0 +1,5 @@
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity.DAL\bin\Debug\FacialSecurity.DAL.dll
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity.DAL\bin\Debug\FacialSecurity.DAL.pdb
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity.DAL\obj\Debug\ResolveAssemblyReference.cache
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity.DAL\obj\Debug\FacialSecurity.DAL.dll
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity.DAL\obj\Debug\FacialSecurity.DAL.pdb
