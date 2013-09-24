@@ -15,8 +15,19 @@ namespace FacialSecurity
 
 		public FaceRecognitionLoginForm()
 		{
-			HasLoggedOn = false;
 			InitializeComponent();
+			HasLoggedOn = false;//默认未登陆
+
+			var iniMgr = new CIniManager(@"Config\Admin.ini");
+			if (!iniMgr.ExistIniFile())//若配置文件不存在则退出
+			{
+				MessageBox.Show("缺少配置文件");
+				Environment.Exit(Environment.ExitCode);
+			}
+			if (iniMgr.IniReadValue("FacialSecurity","Signed") == "false")
+			{
+				btnLogin.Enabled = false;//若没注册则没法登陆
+			}
 		}
 
 		private void linkLabelForPasswordLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -52,6 +63,21 @@ namespace FacialSecurity
 			if (true/*对比成功代码*/)
 			{
 				HasLoggedOn = true;
+			}
+		}
+
+		private void btnSignIn_Click(object sender, EventArgs e)
+		{
+			var signDlg = new SignInForm();
+			signDlg.ShowDialog();
+
+			if (signDlg.DialogResult == DialogResult.OK)
+			{
+				var iniMgr = new CIniManager(@"Config\Admin.ini");
+				if (iniMgr.ExistIniFile() && iniMgr.IniReadValue("FacialSecurity","Signed") == "true")//验证配置文件
+				{
+					btnLogin.Enabled = true;
+				}
 			}
 		}
 	}
