@@ -6,16 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Emgu.CV;
 
 namespace FacialSecurity
 {
-	public partial class Form1 : Form
+	public partial class PasswordLoginForm : Form
 	{
-		public Form1()
+		public PasswordLoginForm()
 		{
-		    int a;
 			InitializeComponent();
+		}
+
+		public string TextBoxPasswordContent
+		{
+			get { return textBoxPassword.Text; }
 		}
 	}
 }
