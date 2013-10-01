@@ -28,65 +28,68 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btnAddRecord = new System.Windows.Forms.Button();
-			this.btnDelRecord = new System.Windows.Forms.Button();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.btnCopyPassword = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// btnAddRecord
-			// 
-			this.btnAddRecord.Location = new System.Drawing.Point(294, 92);
-			this.btnAddRecord.Name = "btnAddRecord";
-			this.btnAddRecord.Size = new System.Drawing.Size(115, 23);
-			this.btnAddRecord.TabIndex = 0;
-			this.btnAddRecord.Text = "增加账号密码信息";
-			this.btnAddRecord.UseVisualStyleBackColor = true;
-			this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
-			// 
-			// btnDelRecord
-			// 
-			this.btnDelRecord.Location = new System.Drawing.Point(303, 242);
-			this.btnDelRecord.Name = "btnDelRecord";
-			this.btnDelRecord.Size = new System.Drawing.Size(75, 23);
-			this.btnDelRecord.TabIndex = 1;
-			this.btnDelRecord.Text = "删除";
-			this.btnDelRecord.UseVisualStyleBackColor = true;
-			this.btnDelRecord.Click += new System.EventHandler(this.btnDelRecord_Click);
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(27, 33);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowTemplate.Height = 23;
-			this.dataGridView1.Size = new System.Drawing.Size(240, 328);
-			this.dataGridView1.TabIndex = 2;
-			// 
-			// btnCopyPassword
-			// 
-			this.btnCopyPassword.Location = new System.Drawing.Point(294, 159);
-			this.btnCopyPassword.Name = "btnCopyPassword";
-			this.btnCopyPassword.Size = new System.Drawing.Size(115, 23);
-			this.btnCopyPassword.TabIndex = 3;
-			this.btnCopyPassword.Text = "复制选中密码";
-			this.btnCopyPassword.UseVisualStyleBackColor = true;
-			this.btnCopyPassword.Click += new System.EventHandler(this.btnCopyPassword_Click);
-			// 
-			// MainForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(492, 399);
-			this.Controls.Add(this.btnCopyPassword);
-			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.btnDelRecord);
-			this.Controls.Add(this.btnAddRecord);
-			this.Name = "MainForm";
-			this.Text = "MainForm";
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.btnAddRecord = new System.Windows.Forms.Button();
+            this.btnDelRecord = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnCopyPassword = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnAddRecord
+            // 
+            this.btnAddRecord.Location = new System.Drawing.Point(294, 92);
+            this.btnAddRecord.Name = "btnAddRecord";
+            this.btnAddRecord.Size = new System.Drawing.Size(115, 23);
+            this.btnAddRecord.TabIndex = 0;
+            this.btnAddRecord.Text = "增加账号密码信息";
+            this.btnAddRecord.UseVisualStyleBackColor = true;
+            this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
+            // 
+            // btnDelRecord
+            // 
+            this.btnDelRecord.Location = new System.Drawing.Point(303, 242);
+            this.btnDelRecord.Name = "btnDelRecord";
+            this.btnDelRecord.Size = new System.Drawing.Size(75, 23);
+            this.btnDelRecord.TabIndex = 1;
+            this.btnDelRecord.Text = "删除";
+            this.btnDelRecord.UseVisualStyleBackColor = true;
+            this.btnDelRecord.Click += new System.EventHandler(this.btnDelRecord_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(27, 33);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 328);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // btnCopyPassword
+            // 
+            this.btnCopyPassword.Location = new System.Drawing.Point(294, 159);
+            this.btnCopyPassword.Name = "btnCopyPassword";
+            this.btnCopyPassword.Size = new System.Drawing.Size(115, 23);
+            this.btnCopyPassword.TabIndex = 3;
+            this.btnCopyPassword.Text = "复制选中密码";
+            this.btnCopyPassword.UseVisualStyleBackColor = true;
+            this.btnCopyPassword.Click += new System.EventHandler(this.btnCopyPassword_Click);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(492, 399);
+            this.Controls.Add(this.btnCopyPassword);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnDelRecord);
+            this.Controls.Add(this.btnAddRecord);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "MainForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 

@@ -26,13 +26,13 @@ namespace FacialSecurity
 					//关闭整个程序
 					Environment.Exit(System.Environment.ExitCode);
 				}
-				MessageBox.Show("请先登录");
+				//MessageBox.Show("请先登录");
 				loginForm.ShowDialog();
 			}
 
 			if (loginForm.DialogResult == DialogResult.OK)
 			{
-				MessageBox.Show("登陆成功！");
+				//MessageBox.Show("登陆成功！");
 			}
 			else
 			{

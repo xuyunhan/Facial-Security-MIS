@@ -32,7 +32,7 @@ namespace FacialSecurity
         //For aquiring 10 images in a row
         List<Image<Gray, byte>> resultImages = new List<Image<Gray, byte>>();
         int results_list_pos = 0;
-        int num_faces_to_aquire = 10;
+        int num_faces_to_aquire = 50;
         bool RECORD = false;
 
         //Saving Jpg
@@ -117,12 +117,12 @@ namespace FacialSecurity
                 if (RECORD && facesDetected.Length > 0 && resultImages.Count < num_faces_to_aquire)
                 {
                     resultImages.Add(result);
-                    count_lbl.Text = "Count: " + resultImages.Count.ToString();
+                    count_lbl.Text = "计数: " + resultImages.Count.ToString();
                     if (resultImages.Count == num_faces_to_aquire)
                     {
-                        ADD_BTN.Enabled = true;
-                        NEXT_BTN.Visible = true;
-                        PREV_btn.Visible = true;
+                     //   ADD_BTN.Enabled = true;
+                     //   NEXT_BTN.Visible = true;
+                     //   PREV_btn.Visible = true;
                         count_lbl.Visible = false;
                         Single_btn.Visible = true;
                         ADD_ALL.Visible = true;
@@ -135,6 +135,7 @@ namespace FacialSecurity
             }
         }
 
+      
         //Saving The Data
         private bool save_training_data(Image face_data)
         {
@@ -260,12 +261,23 @@ namespace FacialSecurity
             {
                 Directory.Delete(Application.StartupPath + "/TrainedFaces/", true);
                 Directory.CreateDirectory(Application.StartupPath + "/TrainedFaces/");
+                MessageBox.Show("已经成功删除所有原来的用户脸部照片!");
             }
         }
         #region 按钮等响应事件
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.Text != textBoxConfirmPassword.Text)
+            if (textBoxPassword.Text.Trim() == "")
+            {
+                MessageBox.Show("请输入密码！");
+                return;
+            }
+            else if (textBoxConfirmPassword.Text.Trim() == "")
+            {
+                MessageBox.Show("请输入确认密码！");
+                return;
+            }
+            else if (textBoxPassword.Text != textBoxConfirmPassword.Text)
             {
                 MessageBox.Show("两次输入密码不一致！");
                 return;
@@ -281,6 +293,8 @@ namespace FacialSecurity
             //改写配置文件
             var iniMgr = new CIniManager(@"Config\Admin.ini");
             iniMgr.IniWriteValue("FacialSecurity", "Signed", "true");
+
+            btnCancel_Click(sender, e);
         }
         //关闭窗体事件
         private void SignInForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -291,28 +305,37 @@ namespace FacialSecurity
         }
   
         //Add the image to training data
-        private void ADD_BTN_Click(object sender, EventArgs e)
+   /*     private void ADD_BTN_Click(object sender, EventArgs e)
         {
             if (resultImages.Count == num_faces_to_aquire)
             {
                 if (!save_training_data(face_PICBX.Image)) MessageBox.Show("Error", "Error in saving file info. Training data not saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("已经成功添加改脸部照片!");
+                }
             }
             else
             {
                 stop_capture();
                 if (!save_training_data(face_PICBX.Image)) MessageBox.Show("Error", "Error in saving file info. Training data not saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("已经成功添加脸部照片!");
+                }
                 initialise_capture();
             }
         }
+    */
         private void Single_btn_Click(object sender, EventArgs e)
         {
             RECORD = false;
             resultImages.Clear();
-            NEXT_BTN.Visible = false;
-            PREV_btn.Visible = false;
+          //  NEXT_BTN.Visible = false;
+          //  PREV_btn.Visible = false;
             Application.Idle += new EventHandler(FrameGrabber);
             Single_btn.Visible = false;
-            count_lbl.Text = "Count: 0";
+            count_lbl.Text = "计数: 0";
             count_lbl.Visible = true;
         }
         //Get 10 image to train
@@ -324,16 +347,17 @@ namespace FacialSecurity
             }
             else
             {
-                if (resultImages.Count == 10)
+                if (resultImages.Count == 50)
                 {
                     resultImages.Clear();
                     Application.Idle += new EventHandler(FrameGrabber);
                 }
                 RECORD = true;
-                ADD_BTN.Enabled = false;
+           //     ADD_BTN.Enabled = false;
             }
 
         }
+        /*
         private void NEXT_BTN_Click(object sender, EventArgs e)
         {
             if (results_list_pos < resultImages.Count - 1)
@@ -360,7 +384,8 @@ namespace FacialSecurity
                 PREV_btn.Enabled = false;
             }
         }
-        private void ADD_ALL_Click(object sender, EventArgs e)
+         */
+        private void Store_All_Picture()
         {
             for (int i = 0; i < resultImages.Count; i++)
             {
@@ -369,8 +394,13 @@ namespace FacialSecurity
                 Thread.Sleep(100);
             }
             ADD_ALL.Visible = false;
+            MessageBox.Show("已经成功存储所有改脸部照片!");
             //restart single face detection
             Single_btn_Click(null, null);
+        }
+        private void ADD_ALL_Click(object sender, EventArgs e)
+        {
+           Store_All_Picture();
         }
 
         #endregion
@@ -379,5 +409,6 @@ namespace FacialSecurity
         {
             this.Close();            
         }
+
     }
 }

@@ -1,0 +1,13 @@
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\bin\Debug\FacialSecurity.exe
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\bin\Debug\FacialSecurity.pdb
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.AddRecordForm.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.FaceRecognitionLoginForm.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.MainForm.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.PasswordLoginForm.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.Properties.Resources.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.SignInForm.resources
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.exe
+F:\FacialSecurity\FacialSecurity\trunk\FacialSecurity\obj\x86\Debug\FacialSecurity.pdb

@@ -23,7 +23,7 @@ using System.Drawing;
 class Classifier_Train: IDisposable
 {
 
-    #region Variables
+    #region 变量
 
     //Eigen
     //EigenObjectRecognizer recognizer;
@@ -37,7 +37,7 @@ class Classifier_Train: IDisposable
     int ContTrain, NumLabels;
     float Eigen_Distance = 0;
     string Eigen_label;
-    int Eigen_threshold = 2000;
+    int Eigen_threshold = 2500;
 
     //Class Variables
     string Error;
@@ -46,7 +46,7 @@ class Classifier_Train: IDisposable
     public string Recognizer_Type = "EMGU.CV.EigenFaceRecognizer";
     #endregion
 
-    #region Constructors
+    #region 构造函数
     /// <summary>
     /// Default Constructor, Looks in (Application.StartupPath + "\\TrainedFaces") for traing data.
     /// </summary>
@@ -121,10 +121,14 @@ class Classifier_Train: IDisposable
                 switch (Recognizer_Type)
                 {
                     case ("EMGU.CV.EigenFaceRecognizer"):
-                            if (Eigen_Distance > Eigen_threshold) return Eigen_label;
+                            if (Eigen_Distance < Eigen_threshold && Eigen_Distance > 0) return Eigen_label;
                             else return "Unknown";
                     case ("EMGU.CV.LBPHFaceRecognizer"):
+                            if (Eigen_Distance < Eigen_threshold && Eigen_Distance > 0) return Eigen_label;
+                            else return "Unknown";
                     case ("EMGU.CV.FisherFaceRecognizer"):
+                            if (Eigen_Distance < Eigen_threshold && Eigen_Distance > 0) return Eigen_label;
+                            else return "Unknown";
                     default:
                             return Eigen_label; //the threshold set in training controls unknowns
                 }
