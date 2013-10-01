@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,8 @@ namespace FacialSecurity
         MCvFont font = new MCvFont(FONT.CV_FONT_HERSHEY_COMPLEX, 0.5, 0.5); //Our fount for writing within the frame
 
         int NumLabels;
+	    private bool IsRecognized = false; //记录是否识别成功
+	    private string _StoreName = "";
 
         //Classifier with default training location
         Classifier_Train Eigen_Recog = new Classifier_Train();
@@ -58,13 +61,12 @@ namespace FacialSecurity
 
             if (Eigen_Recog.IsTrained)
             {
-                message_bar.Text = "Training Data loaded";
+                message_bar.Text = "用户脸部图像已经载入！";
             }
             else
             {
-                message_bar.Text = "No training data found, please train program using Train menu option";
-            }
-            initialise_capture();
+                message_bar.Text = "没有发现存储de用户脸部图像, 请先注册！";
+            }      
 		}
         #endregion
 
@@ -99,8 +101,12 @@ namespace FacialSecurity
 
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
-			//todo::用摄像头拍一张照片对比，成功则HasLoggedOn设true
-			if (true/*对比成功代码*/)
+		    if (!IsRecognized)
+		    {
+		        initialise_capture();
+		    }
+		    //todo::用摄像头拍一张照片对比，成功则HasLoggedOn设true
+            if (IsRecognized)
 			{
 				HasLoggedOn = true;
 			}
@@ -126,17 +132,36 @@ namespace FacialSecurity
 		}
         #endregion
 
+        //读取用户名
+        private bool ReadUserName()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader("UserName.dat");
+                int i = 0;
+                while (!sr.EndOfStream) //读到文件流结尾退出      
+                {                
+                    _StoreName = sr.ReadLine();
+                }
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
         public void retrain()
         {
 
             Eigen_Recog = new Classifier_Train();
             if (Eigen_Recog.IsTrained)
             {
-                message_bar.Text = "Training Data loaded";
+                message_bar.Text = "用户脸部图像已经载入！";
             }
             else
             {
-                message_bar.Text = "No training data found, please train program using Train menu option";
+                message_bar.Text = "没有发现存储用户脸部图像, 请先注册！";
             }
         }
         //摄像机的开始与停止
@@ -249,6 +274,27 @@ namespace FacialSecurity
 
                             //Draw the label for each face detected and recognized
                             currentFrame.Draw(name + " ", ref font, new Point(facesDetected[i].X - 2, facesDetected[i].Y - 2), new Bgr(Color.LightGreen));
+                            _StoreName = name;
+                            if (_StoreName == "Unknown")
+                            {
+                                _StoreName = "Unknown";
+                            }
+                            else if (_StoreName == "")
+                            {
+                                _StoreName = "Unknown";
+                            }
+
+                            if (_StoreName != "Unknown")
+                              {
+                                  IsRecognized = true;
+                                  if (IsRecognized)
+                                  {
+                                      HasLoggedOn = true;
+                                  }
+                                  MessageBox.Show("识别成功,请点击登陆!");
+                                  stop_capture();
+                              }
+
                             ADD_Face_Found(result, name, match_value);
                         }
 
@@ -262,6 +308,7 @@ namespace FacialSecurity
                 });
                 //Show the faces procesed and recognized
                 image_PICBX.Image = currentFrame.ToBitmap();
+               
             }
         }
 
