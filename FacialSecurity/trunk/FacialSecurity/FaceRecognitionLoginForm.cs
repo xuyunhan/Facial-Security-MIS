@@ -31,7 +31,8 @@ namespace FacialSecurity
 
         int NumLabels;
 	    private bool IsRecognized = false; //记录是否识别成功
-	    private string _StoreName = "";
+	    private string _StoreName = "";   //存储的用户名
+	    private bool IsOpenWebcam = false;
 
         //Classifier with default training location
         Classifier_Train Eigen_Recog = new Classifier_Train();
@@ -61,11 +62,13 @@ namespace FacialSecurity
 
             if (Eigen_Recog.IsTrained)
             {
-                message_bar.Text = "用户脸部图像已经载入！";
+                message_bar.Text = "现在可以进行识别登陆！";
+                btnSignIn.Visible = false;
             }
             else
             {
-                message_bar.Text = "没有发现存储de用户脸部图像, 请先注册！";
+                message_bar.Text = "没有发现存储的用户脸部图像, 请先注册！";
+                btnSignIn.Visible = true;
             }      
 		}
         #endregion
@@ -103,7 +106,15 @@ namespace FacialSecurity
 		{
 		    if (!IsRecognized)
 		    {
-		        initialise_capture();
+                if (!IsOpenWebcam)
+                {
+                    initialise_capture();                 
+                }
+                else
+                {
+                    stop_capture();
+                    initialise_capture();   
+                }
 		    }
 		    //todo::用摄像头拍一张照片对比，成功则HasLoggedOn设true
             if (IsRecognized)
@@ -132,36 +143,18 @@ namespace FacialSecurity
 		}
         #endregion
 
-        //读取用户名
-        private bool ReadUserName()
-        {
-            try
-            {
-                StreamReader sr = new StreamReader("UserName.dat");
-                int i = 0;
-                while (!sr.EndOfStream) //读到文件流结尾退出      
-                {                
-                    _StoreName = sr.ReadLine();
-                }
-                sr.Close();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
+        
         public void retrain()
         {
 
             Eigen_Recog = new Classifier_Train();
             if (Eigen_Recog.IsTrained)
             {
-                message_bar.Text = "用户脸部图像已经载入！";
+                message_bar.Text = "现在可以进行识别登录！";
             }
             else
             {
-                message_bar.Text = "没有发现存储用户脸部图像, 请先注册！";
+                message_bar.Text = "没有发现存储的用户脸部图像, 请先注册！";
             }
         }
         //摄像机的开始与停止
@@ -178,6 +171,7 @@ namespace FacialSecurity
             {
                 Application.Idle += new EventHandler(FrameGrabber_Standard);
             }
+            IsOpenWebcam = !IsOpenWebcam;
         }
         private void stop_capture()
         {
@@ -193,6 +187,7 @@ namespace FacialSecurity
             {
                 grabber.Dispose();
             }
+            IsOpenWebcam = !IsOpenWebcam;
         }
         //Process Frame
         void FrameGrabber_Standard(object sender, EventArgs e)
@@ -291,10 +286,11 @@ namespace FacialSecurity
                                   {
                                       HasLoggedOn = true;
                                   }
-                                  MessageBox.Show("识别成功,请点击登陆!");
-                                  stop_capture();
+                                 // MessageBox.Show("识别成功,请点击登陆!");        
+                                  if (IsOpenWebcam)
+                                  { stop_capture(); }
+                                  this.DialogResult = DialogResult.OK;
                               }
-
                             ADD_Face_Found(result, name, match_value);
                         }
 
@@ -358,6 +354,8 @@ namespace FacialSecurity
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            if(IsOpenWebcam)
+            {stop_capture();}
             this.Dispose();
         }
 	}
