@@ -69,7 +69,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "登陆";
+            this.btnLogin.Text = "识别登陆";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -123,9 +123,9 @@
             this.lable_Tips.ForeColor = System.Drawing.Color.Red;
             this.lable_Tips.Location = new System.Drawing.Point(12, 350);
             this.lable_Tips.Name = "lable_Tips";
-            this.lable_Tips.Size = new System.Drawing.Size(443, 14);
+            this.lable_Tips.Size = new System.Drawing.Size(270, 14);
             this.lable_Tips.TabIndex = 7;
-            this.lable_Tips.Text = "提示:如果不能成功识别，请缓慢的左右转动头部或改至其他角度!";
+            this.lable_Tips.Text = "提示:请确保光线充足，以便快速识别！";
             // 
             // FaceRecognitionLoginForm
             // 
