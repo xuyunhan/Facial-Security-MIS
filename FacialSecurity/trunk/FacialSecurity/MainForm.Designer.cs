@@ -33,6 +33,7 @@
             this.btnDelRecord = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCopyPassword = new System.Windows.Forms.Button();
+            this.btn_DeleteAll_Picture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,11 +76,22 @@
             this.btnCopyPassword.UseVisualStyleBackColor = true;
             this.btnCopyPassword.Click += new System.EventHandler(this.btnCopyPassword_Click);
             // 
+            // btn_DeleteAll_Picture
+            // 
+            this.btn_DeleteAll_Picture.Location = new System.Drawing.Point(294, 300);
+            this.btn_DeleteAll_Picture.Name = "btn_DeleteAll_Picture";
+            this.btn_DeleteAll_Picture.Size = new System.Drawing.Size(137, 23);
+            this.btn_DeleteAll_Picture.TabIndex = 4;
+            this.btn_DeleteAll_Picture.Text = "删除用户已存储的照片";
+            this.btn_DeleteAll_Picture.UseVisualStyleBackColor = true;
+            this.btn_DeleteAll_Picture.Click += new System.EventHandler(this.btn_DeleteAll_Picture_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 399);
+            this.Controls.Add(this.btn_DeleteAll_Picture);
             this.Controls.Add(this.btnCopyPassword);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelRecord);
@@ -99,6 +111,7 @@
 		private System.Windows.Forms.Button btnDelRecord;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Button btnCopyPassword;
+        private System.Windows.Forms.Button btn_DeleteAll_Picture;
 
 
 
