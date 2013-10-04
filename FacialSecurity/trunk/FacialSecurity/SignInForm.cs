@@ -49,12 +49,18 @@ namespace FacialSecurity
         //Variables
         FaceRecognitionLoginForm Parent;
 
+	    private bool IsOpenWebcam = false;
+
         #endregion
 
         #region 构造函数（初始化一些数据）
         public SignInForm(FaceRecognitionLoginForm _Parent)
 		{
             InitializeComponent();
+            //设定密码的掩码符号
+            textBoxPassword.PasswordChar = '*';
+            textBoxConfirmPassword.PasswordChar = '*';
+
             Parent = _Parent;
             Face = Parent.Face;
             //Face = new HaarCascade(Application.StartupPath + "/Cascades/haarcascade_frontalface_alt2.xml");
@@ -69,6 +75,7 @@ namespace FacialSecurity
         {
             grabber = new Capture();
             grabber.QueryFrame();
+            IsOpenWebcam = !IsOpenWebcam; //摄像机打开
             //Initialize the FrameGraber event
             Application.Idle += new EventHandler(FrameGrabber);
         }
@@ -79,6 +86,7 @@ namespace FacialSecurity
             {
                 grabber.Dispose();
             }
+            IsOpenWebcam = !IsOpenWebcam;
             //Initialize the FrameGraber event
         }
 
@@ -127,6 +135,7 @@ namespace FacialSecurity
                         Single_btn.Visible = true;
                         ADD_ALL.Visible = true;
                         RECORD = false;
+                        Store_All_Picture(); //存储所有照片
                         Application.Idle -= new EventHandler(FrameGrabber);
                     }
                 }
@@ -255,7 +264,7 @@ namespace FacialSecurity
         }
 
         //Delete all the old training data by simply deleting the folder
-        private void Delete_Data_BTN_Click(object sender, EventArgs e)
+   /*     private void Delete_Data_BTN_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(Application.StartupPath + "/TrainedFaces/"))
             {
@@ -264,6 +273,7 @@ namespace FacialSecurity
                 MessageBox.Show("已经成功删除所有原来的用户脸部照片!");
             }
         }
+    */
         #region 按钮等响应事件
         private void btnSignIn_Click(object sender, EventArgs e)
         {
@@ -349,8 +359,8 @@ namespace FacialSecurity
             {
                 if (resultImages.Count == 50)
                 {
-                    resultImages.Clear();
-                    Application.Idle += new EventHandler(FrameGrabber);
+                    resultImages.Clear();                    
+                    Application.Idle += new EventHandler(FrameGrabber);                   
                 }
                 RECORD = true;
            //     ADD_BTN.Enabled = false;
@@ -391,7 +401,7 @@ namespace FacialSecurity
             {
                 face_PICBX.Image = resultImages[i].ToBitmap();
                 if (!save_training_data(face_PICBX.Image)) MessageBox.Show("Error", "Error in saving file info. Training data not saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Thread.Sleep(100);
+                Thread.Sleep(10);
             }
             ADD_ALL.Visible = false;
             MessageBox.Show("已经成功存储所有改脸部照片!");
@@ -407,6 +417,8 @@ namespace FacialSecurity
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if(IsOpenWebcam)
+            {stop_capture();}
             this.Close();            
         }
 
