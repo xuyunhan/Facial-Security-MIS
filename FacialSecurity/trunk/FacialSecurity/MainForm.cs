@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -62,6 +63,16 @@ namespace FacialSecurity
 // 				MessageBox.Show("点了删除");
 			}
 		}
+
+        private void btn_DeleteAll_Picture_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(Application.StartupPath + "/TrainedFaces/"))
+            {
+                Directory.Delete(Application.StartupPath + "/TrainedFaces/", true);
+                Directory.CreateDirectory(Application.StartupPath + "/TrainedFaces/");
+                MessageBox.Show("已经成功删除所有原来的用户脸部照片!");
+            }
+        }
 
 	}
 }
