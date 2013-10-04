@@ -47,6 +47,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.face_PICBX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image_PICBX)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -208,11 +210,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(459, 316);
+            this.label5.Location = new System.Drawing.Point(462, 309);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 12);
+            this.label5.Size = new System.Drawing.Size(179, 12);
             this.label5.TabIndex = 30;
-            this.label5.Text = "小提示:请多添加照片,";
+            this.label5.Text = "提示:请从远、近、左侧、右侧等";
             // 
             // label6
             // 
@@ -220,15 +222,36 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(501, 338);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 12);
+            this.label6.Size = new System.Drawing.Size(0, 12);
             this.label6.TabIndex = 31;
-            this.label6.Text = "以提高识别的成功率!";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(491, 326);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(167, 12);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "多角度各添加50张照片,以提高";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(491, 345);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 12);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "识别的成功率!";
             // 
             // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 427);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
@@ -277,5 +300,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
 	}
 }
