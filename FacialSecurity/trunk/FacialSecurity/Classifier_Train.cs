@@ -37,7 +37,7 @@ class Classifier_Train: IDisposable
     int ContTrain, NumLabels;
     float Eigen_Distance = 0;
     string Eigen_label;
-    int Eigen_threshold = 2500;
+    int Eigen_threshold = 2000;
 
     //Class Variables
     string Error;
