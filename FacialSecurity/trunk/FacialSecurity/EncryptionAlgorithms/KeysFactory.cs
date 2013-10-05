@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FacialSecurity.EncryptionAlgorithms;
 
 namespace FacialSecurity
 {
@@ -24,6 +25,12 @@ namespace FacialSecurity
 		{
 			var MD5Obj = new MD5();
 			return MD5Obj.TransToMD5(originalStr);
+		}
+
+		public string GenerateRandomStrongPassword()
+		{
+			var ranStrPwObj = new RandomStrongPassword();
+			return ranStrPwObj.GenerateRandomStrongPassword();
 		}
 	}
 }
