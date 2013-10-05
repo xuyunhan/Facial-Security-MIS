@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace FacialSecurity
 {
@@ -9,22 +11,44 @@ namespace FacialSecurity
 	{
 		//用AES-256bit加解密的类
 
-		private string _secretKey = "";//加解密的密钥
+        private AesManaged myAes = new AesManaged();
 
-		public string Encrypt(string originalStr)//加密函数
-		{
-			string result = "";
-			//todo::根据密钥加密并返回加密后的字符串
-			;
-			return result;
-		}
+        public string Encrypt(string originalStr)//加密函数
+        {
+            string result = "";
+            ICryptoTransform encryptor = myAes.CreateEncryptor(myAes.Key, myAes.IV);
 
-		public string Decrypt(string encryptedString)//解密函数
-		{
-			string result = "";
-			//todo::根据密钥解密并返回解密后的字符串
-			;
-			return result;
-		}
-	}
+            using (MemoryStream msEncrypt = new MemoryStream())
+            {
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(originalStr);
+                    }
+                    result = System.Convert.ToBase64String(msEncrypt.ToArray());
+                }
+            }
+            return result;
+        }
+
+        public string Decrypt(string encryptedString)//解密函数
+        {
+            byte[] cipherText = System.Convert.FromBase64String(encryptedString);
+            string result = "";
+            ICryptoTransform decryptor = myAes.CreateDecryptor(myAes.Key, myAes.IV);
+
+            using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    {
+                        result = srDecrypt.ReadToEnd();
+                    }
+                }
+            }
+            return result;
+        }
+    }
 }
