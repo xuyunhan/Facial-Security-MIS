@@ -8,9 +8,8 @@ namespace FacialSecurity.EncryptionAlgorithms
 {
     internal class RandomStrongPassword
     {
-        public string GenerateRandomStrongPassword()
+        public string GenerateRandomStrongPassword() //返回随机生成的强密码
         {
-            //todo::返回随机生成的强密码
             string[] oldpassword = new string[4];
             oldpassword[0] = "abcdefg";
             oldpassword[1] = "ABCDEFG";
@@ -19,7 +18,7 @@ namespace FacialSecurity.EncryptionAlgorithms
             char[]dui=new char[8];
             char[] cuo = new char[8];
            
-            var milong = 8;          //限定强密码的长度为8
+            const int milong = 8; //限定强密码的长度为8
             string password = "";   // 生成的强密码存放在此变量中
 
             char[] chs = new char[milong];  // chs 用于存放强密码的字符组
@@ -41,21 +40,21 @@ namespace FacialSecurity.EncryptionAlgorithms
                 chs[i] = cuo[strIdx];                                 //把选定字符所在的位置的字符存放到强字符数组中
             }
             // 打乱 chs 的顺序（不同的字符随机存放）
-            for( int i=0 ; i <1000 ; i++ ){
-            int idx1 = ( t.Next(0,chs.Length-1) );
-            int idx2 = ( t.Next(0,chs.Length-1) );
-            if( idx1 == idx2 ){
-            continue ;
-             }
-            char tempChar = chs[ idx1 ] ;
-            chs[ idx1 ] = chs[ idx2 ] ;
-            chs[ idx2 ] = tempChar ;
+            for( int i=0 ; i <1000 ; i++ )
+			{
+				int idx1 = (t.Next(0, chs.Length - 1));
+				int idx2 = (t.Next(0, chs.Length - 1));
+				if (idx1 == idx2)
+				{
+					continue;
+				 }
+				char tempChar = chs[idx1];
+				chs[idx1] = chs[idx2];
+				chs[idx2] = tempChar;
              }
             password = new String( chs );
+
             return password;
-
-
-
         }
     }
 }
